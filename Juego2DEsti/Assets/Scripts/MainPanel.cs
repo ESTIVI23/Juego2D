@@ -1,63 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
-public class MainPanel: MonoBehaviour
+
+public class MainPanel : MonoBehaviour
 {
-    [Header("options")]
-    public Slider VolumeFX;
-    public Slider VolumenMaster;
+    [Header("Options")]
+    public Slider volumeFX;
+    public Slider volumeMaster;
     public Toggle mute;
     public AudioMixer mixer;
     public AudioSource fxSource;
     public AudioClip clickSound;
+    private float lastVolume;
+    
     [Header("Panels")]
     public GameObject mainPanel;
     public GameObject optionsPanel;
     public GameObject levelSelectPanel;
 
-    
-
-
 
     private void Awake()
     {
-        VolumeFX.onValueChanged.AddListener(ChangevolumeFX);
-        VolumenMaster.onValueChanged.AddListener(ChangevolumeMaster);
+        volumeFX.onValueChanged.AddListener(ChangeVolumeFX);
+        volumeMaster.onValueChanged.AddListener(ChangeVolumeMaster);
     }
 
+    public void SetMute()
+    {
 
-    public void OpenPanel (GameObject panel)
+        if (mute.isOn)
+        { 
+        mixer.GetFloat("VolMaster", out lastVolume);
+        mixer.SetFloat("VolMaster", -80);
+        }
+        else
+            mixer.SetFloat("VolMaster", lastVolume);
+    }
+   
+    public void Openpanel(GameObject panel)
     {
         mainPanel.SetActive(false);
         optionsPanel.SetActive(false);
         levelSelectPanel.SetActive(false);
 
         panel.SetActive(true);
-
         PlaySoundButton();
     }
 
-
-    public void ChangevolumeMaster(float v)
+    public void ChangeVolumeMaster(float v)
     {
-        mixer.SetFloat("volMaster", v);
+        mixer.SetFloat("VolMaster", v);
     }
-    public void ChangevolumeFX(float v)
+    public void ChangeVolumeFX(float v)
     {
-        mixer.SetFloat("volFX", v);
+        mixer.SetFloat("VolFX", v);
     }
-
-
     public void PlaySoundButton()
     {
-
         fxSource.PlayOneShot(clickSound);
-
     }
 }
-
-
-
