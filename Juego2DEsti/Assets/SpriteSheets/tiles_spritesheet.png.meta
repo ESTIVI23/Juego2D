@@ -1357,7 +1357,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1365,6 +1365,27 @@ TextureImporter:
       bones: []
       spriteID: 452148bd2bf4e4010800000000000000
       internalID: 1174964182395916884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles_spritesheet_61
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1169160f4afdd04f8cdabd90825ae6e
+      internalID: 480798198
       vertices: []
       indices: 
       edges: []
