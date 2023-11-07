@@ -15,6 +15,7 @@ public class John_Player : MonoBehaviour
     private float Horizontal;
     private bool Grounded;// es verdadero ho falso  si tocas el piso o si no tocas el piso 
     public float velocidadMaxima = 5.0f;
+    private float lastShoot;
           
 
     // Start is called before the first frame update
@@ -55,9 +56,10 @@ public class John_Player : MonoBehaviour
             Jump();
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && Time.time > lastShoot + 0.25f)
         {
             Shoot();
+            lastShoot = Time.time;
         }
 
     }
